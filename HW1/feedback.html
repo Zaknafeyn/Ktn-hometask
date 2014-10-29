@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html">
+<head>
+    <link rel="icon" type="image/png" href="img/favicon-32x32.png" sizes="32x32" />
+    <title>Brightness of HTML5 - Home tasks #1 for Kottans course</title>
+    <style>
+        .layout{
+            width:1024px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+<div align="center">
+    <header class="layout" style="background-color: lightskyblue">
+        <a href="index.html"><img src="img/HTML5_title.jpg" align="center" /></a>
+        <div align="center">
+            <b>Be smart and learn more about HTML5!</b>
+        </div>
+    </header>
+    <section class="layout" style="display: inline-block">
+        <nav style="float: left; width: 10%; text-align: left">
+            <h4>Navigation</h4>
+            <a href="about.html">About</a><br />
+            <a href="register.html">Register</a><br />
+            <a href="faq.html">FAQ</a><br />
+            <a href="news.html">News</a><br />
+            <a href="contacts.html">Contacts</a>
+            <a href="feedback.html">Feedback</a><br />
+        </nav>
+
+        <main style="float: left; width: 70%" >
+            <h1 align="center">Please leave you feedback here:</h1>
+            <section>
+                <div>
+                    <form>
+                        <div>
+                            <label>Name</label>
+                            <input type="text" placeholder="Name"/>
+                            <label>E-mail address</label>
+                            <input type="text" placeholder="some@example.com"/>
+                        </div>
+                        <br />
+                        <div align="center">
+                            <label>Comment:</label><br />
+                            <textarea cols="60" rows="5"></textarea>
+                        </div>
+                        <div align="center">
+                            <button type="submit" value="Submit" title="Submit">Submit</button>&nbsp;&nbsp;
+                            <button type="reset" value="Reset" title="Reset">Reset</button>
+                        </div>
+                    </form>
+                </div>
+                <h1>Published comments:</h1>
+                <div align="left">
+                    <dl>
+                        <dt><b><a href="mailto:someUser1@somehost.com?subject=Let%20me%20speak%20from%20my%20heart">Some user1</a></b> - 1h ago</dt>
+                        <dd>I enjoyed this site and HTML5!</dd>
+                    </dl>
+                    <dl>
+                        <dt><b><a href="mailto:Bill1@microsoft.com">Bill Gates</a></b> - 2h ago</dt>
+                        <dd>HTML5 4ever!</dd>
+                    </dl>
+                </div>
+            </section>
+
+
+        </main>
+
+        <aside style="float: left; width: 20%">
+            <img src="some_broken_file.jpg" width="204" height="210" alt="Intentially left broken img" />
+        </aside>
+    </section>
+    <footer class="layout">
+        <b>Copyright &copy; by <a href="http://cv.vradchuk.info">Valentine Radchuk</a></b>
+    </footer>
+</div>
+
+</body>
+</html>
