@@ -20,6 +20,20 @@ time, mark, audio, video
 }
 
 
+nav {
+    float: left; width: 10%;
+    text-align: left;
+}
+
+main {
+    float: left; width: 70%;
+}
+
+aside{
+    float: left;
+    width: 20%;
+}
+
 /*other styles*/
 a:link, a:visited{
     color: dodgerblue;
@@ -37,14 +51,17 @@ a.menu-item:hover{
     color: green;
 }
 
-section.layout{
+.layout{
     width:1024px;
     text-align: center;
+}
+
+section.layout{
     background-color: lightgrey;
     display: inline-block
 }
 
-p::first-letter{
+p.paragraph::first-letter{
     font-size: x-large;
 }
 
@@ -83,4 +100,16 @@ h1,h2,h3,h4,h5,h6{
     text-shadow: none;
     background-color: #999;
     width: 140px;
+}
+
+p.paragraph{
+    text-align: justify;
+}
+
+.align-center{
+    text-align: center;
+}
+
+.align-left{
+    text-align: left;
 }

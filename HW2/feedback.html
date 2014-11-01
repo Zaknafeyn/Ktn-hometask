@@ -1,27 +1,21 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/html">
+<html>
 <head>
     <link rel="icon" type="image/png" href="img/favicon-32x32.png" sizes="32x32" />
     <link rel="stylesheet" type="text/css" href="styles/styles.css" media="screen"/>
     <title>Brightness of HTML5 - Home tasks #1 for Kottans course</title>
-    <style>
-        .layout{
-            width:1024px;
-            text-align: center;
-        }
-    </style>
 </head>
 
 <body>
 <div align="center">
     <header class="layout header-bar">
-        <a href="index.html"><img src="img/HTML5_title.jpg" align="center" /></a>
-        <div align="center">
+        <a href="index.html"><img src="img/HTML5_title.jpg" class="align-center" /></a>
+        <div class="align-center">
             <b>Be smart and learn more about HTML5!</b>
         </div>
     </header>
     <section class="layout">
-        <nav style="float: left; width: 10%; text-align: left">
+        <nav>
             <h4>Navigation</h4>
             <a class="menu-item" href="about.html">About</a><br />
             <a class="menu-item" href="register.html">Register</a><br />
@@ -31,8 +25,8 @@
             <a class="menu-item" href="feedback.html">Feedback</a><br />
         </nav>
 
-        <main style="float: left; width: 70%" >
-            <h1 align="center">Please leave you feedback here:</h1>
+        <main>
+            <h1 class="align-center">Please leave you feedback here:</h1>
             <section>
                 <div>
                     <form>
@@ -43,18 +37,18 @@
                             <input type="text" placeholder="some@example.com"/>
                         </div>
                         <br />
-                        <div align="center">
+                        <div class="align-center">
                             <label>Comment:</label><br />
                             <textarea cols="60" rows="5"></textarea>
                         </div>
-                        <div align="center">
+                        <div class="align-center">
                             <button type="submit" value="Submit" title="Submit">Submit</button>&nbsp;&nbsp;
                             <button type="reset" value="Reset" title="Reset">Reset</button>
                         </div>
                     </form>
                 </div>
                 <h1>Published comments:</h1>
-                <div align="left">
+                <div class="align-left">
                     <dl>
                         <dt><b><a href="mailto:someUser1@somehost.com?subject=Let%20me%20speak%20from%20my%20heart">Some user1</a></b> - 1h ago</dt>
                         <dd>I enjoyed this site and HTML5!</dd>
@@ -69,7 +63,7 @@
 
         </main>
 
-        <aside style="float: left; width: 20%">
+        <aside>
             <a href="http://www.w3schools.com/"> <img src="img/W3School.banner.png" width="204" height="191" /></a>
         </aside>
     </section>
