@@ -1,9 +1,40 @@
+/*resets*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video
+{
+    margin: 0;
+    padding: 0;
+    border: 0;
+    vertical-align: baseline;
+}
+
+
+/*other styles*/
 a:link, a:visited{
     color: dodgerblue;
 }
 
 a:hover{
     color: blue;
+}
+
+a.menu-item:link, a.menu-item:visited{
+    color: lightseagreen;
+}
+
+a.menu-item:hover{
+    color: green;
 }
 
 section.layout{
@@ -18,8 +49,35 @@ h1,h2,h3,h4,h5,h6{
     font-family: sans-serif;
     font: "Arial";
     font-weight: bold;
+    text-align: center;
 }
 
 .header-bar{
     background-color: lightskyblue
+}
+
+.topic-header{
+    margin-bottom: 10px;
+    margin-top: 10px;
+    /*border-bottom: solid;*/
+}
+
+.topic-header::after{
+    display: inline-block;
+    margin: 0 0 8px 20px;
+    height: 3px;
+    content: " ";
+    text-shadow: none;
+    background-color: #999;
+    width: 140px;
+}
+
+.topic-header::before{
+    display: inline-block;
+    margin: 0 20px 8px 0;
+    height: 3px;
+    content: " ";
+    text-shadow: none;
+    background-color: #999;
+    width: 140px;
 }
