@@ -1,0 +1,25 @@
+a:link, a:visited{
+    color: dodgerblue;
+}
+
+a:hover{
+    color: blue;
+}
+
+section.layout{
+    background-color: lightgrey;
+}
+
+p::first-letter{
+    font-size: x-large;
+}
+
+h1,h2,h3,h4,h5,h6{
+    font-family: sans-serif;
+    font: "Arial";
+    font-weight: bold;
+}
+
+.header-bar{
+    background-color: lightskyblue
+}
