@@ -38,7 +38,10 @@ a.menu-item:hover{
 }
 
 section.layout{
+    width:1024px;
+    text-align: center;
     background-color: lightgrey;
+    display: inline-block
 }
 
 p::first-letter{
