@@ -20,11 +20,15 @@ time, mark, audio, video
     /*vertical-align: baseline;*/
 }
 
-a{
+p {
+	text-align: justify;
+}
+
+a {
 	text-decoration: none;
 }
 
-a:link, a:visited{
+a:link, a:visited {
 	color: #009999;
 }
 
@@ -33,19 +37,72 @@ a:hover{
 }
 
 header{
-	padding: 10px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	display: inline;
+	height: 20px;
+}
+
+h2{
+	font: 35px arial, sans-serif;
+	text-align: center;
 }
 
 .layout {
+	background-color: #ededed;
 	width: 1024;
 	/* center div block */
 	margin-left: auto;
 	margin-right: auto;
+	display: block;
+	/*margin: 5px;*/
 }
 
-.menu-item{
-	position:relative;
+.menu-item {
+	display: block;
 	float: left;
 	width: 25%;
+	height: 20px;
 	text-align: center;
+}
+
+img.img {
+	width: 100;
+	height: 100;
+	padding: 10px;
+}
+
+.float-left {
+	float: left;
+}
+
+.float-right {
+	float: right;
+}
+
+.topic-header{
+    margin-bottom: 10px;
+    margin-top: 10px;
+    /*border-bottom: solid;*/
+    text-align: center;
+}
+
+.topic-header::after{
+    display: inline-block;
+    margin: 0 0 8px 20px;
+    height: 3px;
+    content: " ";
+    text-shadow: none;
+    background-color: #999;
+    width: 140px;
+}
+
+.topic-header::before{
+    display: inline-block;
+    margin: 0 20px 8px 0;
+    height: 3px;
+    content: " ";
+    text-shadow: none;
+    background-color: #999;
+    width: 140px;
 }
