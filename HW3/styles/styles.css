@@ -22,6 +22,7 @@ time, mark, audio, video
 
 p {
 	text-align: justify;
+	text-indent: 20px;
 }
 
 a {
@@ -45,23 +46,35 @@ header, footer{
 }
 
 footer{
-	height: 150px;
-	padding-bottom 30px;
-	padding-top: 30px;
-
+	height: 100px;
+	padding-bottom: 30px;
+	/*padding-top: 30px;*/
 }
 
 h2{
 	font: 35px arial, sans-serif;
 	text-align: center;
+	display: block;
+	width: 100%;
+	border-bottom: 1px;
+	border-style:inset;
+	border-color: #f6f6f6; 
 }
 
 section {
-	padding: 10px;
+	width: 100%;
+}
+
+section.odd{
+	background-color: #fff;
+}
+
+section.even{
+	background-color: #e8e8e8;
 }
 
 .layout {
-	background-color: #ededed;
+	/*background-color: #ededed;*/
 	width: 1024;
 	/* center div block */
 	margin-left: auto;
@@ -109,14 +122,10 @@ img.img {
     font-style: oblique;
 }
 
-dd {
-	text-indent: 20px;
-}
-
 .credits {
 	color: #99cccc;
-	font: normal normal normal 10px/80%, Helvetica, sans-serif;
-	display: inline-block;
+	font: 10px/80%, Helvetica, sans-serif;
+	/*display: inline-block;*/
 	margin-bottom: 5px;
 }
 
@@ -132,7 +141,9 @@ dd {
 }
 
 .down-menu{
-	margin-top: 40px;
+	/*margin-top: 40px;*/
+	text-align: center;
+	display: block;
 }
 
 label {
@@ -148,10 +159,39 @@ div.col-right{
 }
 
 div.copyright{
+	clear: left;
 	border-top: solid 1px #000;
 	width: 100%;
 	text-align: center;
 	display: block;
 	vertical-align: middle;
-	padding-top: 15px;
+	padding-top: 20px;
+}
+
+.nav-up {
+	color: yellow;
+	font-family:sans-serif;
+	font-variant:normal;
+	font-size: 12px;
+	/*font: 8px, Helvetica, sans-serif;*/
+}
+
+.down-menu-place {
+	display: inline;
+	text-align: left;
+	padding-bottom: 5px;
+	/*outline-style: solid;
+	outline-width: 2px;
+	outline-color: #000;*/
+	float: left;
+	width: 50%;
+}
+
+.vote-form{
+	
+}
+
+.feedback {
+	display: block;
+	width: 100%;
 }
