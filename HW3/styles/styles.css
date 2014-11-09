@@ -73,6 +73,23 @@ section.even{
 	background-color: #e8e8e8;
 }
 
+.align-center {
+	text-align: center;
+}
+
+.contact {
+	display: block;
+	padding-left: 20px;
+	padding-top: 20px;
+	font-size: 18px;
+	text-align: left;
+	height: auto;
+	width: auto;	
+
+	font-style: normal;
+	font-family: Geneva, Arial, Helvetica, sans-serif;
+}
+
 .layout {
 	/*background-color: #ededed;*/
 	width: 1024;
@@ -122,6 +139,20 @@ img.img {
     font-style: oblique;
 }
 
+.map {
+	display: block;
+	float: left;
+	width: 400px;
+	height: 300px;
+}
+
+div.address {
+	display: block;
+	height: 300px;
+	float: left;
+	width: calc(100% - 400px);
+}
+
 .credits {
 	color: #99cccc;
 	font: 10px/80%, Helvetica, sans-serif;
@@ -146,16 +177,43 @@ img.img {
 	display: block;
 }
 
-label {
+/*label {
 	display:inline-block;
 	widows: 50%;
 	text-align: right;
-
-}
+}*/
 
 div.col-right{
 	float: right;
 	width: 50%;
+}
+
+div.contact-cell{
+	width: 50%;
+	display: inline-block;
+	float: left;
+}
+
+div.text-align-left{
+	text-align: left;
+}
+
+div.text-align-right{
+	text-align: right;
+}
+
+div.clear-left {
+	clear: left;
+}
+
+label.contact-label {
+	display: block;
+}
+
+.contact-input{
+	display: block;
+	margin-top: 5px;
+	height: 20px;
 }
 
 div.copyright{
