@@ -98,6 +98,7 @@ section.even{
 
 .layout {
 	width: 1024;
+	min-width: 1024px;
 	margin-left: auto;
 	margin-right: auto;
 	display: block;
@@ -147,6 +148,11 @@ img.img {
 	float: left;
 	width: 400px;
 	height: 300px;
+}
+
+.button-place {
+	clear:  left;
+	padding-top: 5px;
 }
 
 div.address {
