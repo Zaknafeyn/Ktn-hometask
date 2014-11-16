@@ -1,7 +1,7 @@
 HW4 - [lecture link](http://kottans.org/js-slides/js_fundamentals/)
 - [x] Задача 0 
-- [ ] Задача 1
-- [ ] Задача 2
+- [x] Задача 1
+- [x] Задача 2
 
 ### Задача №0.
 ```
