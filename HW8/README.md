@@ -12,18 +12,18 @@ https://drive.google.com/#folders/0B65dEGRmB3ViSXVoT3g0SDZjWmM
 Апи по адресу http://api.sudodoki.name:8888/   
 Доступные действия:   
 POST /signup -> возможность зарегестрировать нового пользователя.   
-В теле запроса ожидается поля login, password, passwordConfirmation
-```
+В теле запроса ожидается поля login, password, passwordConfirmation   
 **Типа такого:**
+```
   $.post(API_URL + '/signup', {data: {login: ..., password: ..., passwordConfirmation: ...}})
 В ответ получаем или
   1) статус ошибки и или текстовую строку, или массив объектов ошибок валидации
   2) 200, {status: 'New and shiny account for you!', token: Ваш_секретный токен, который используется при запросах к /user/:id }
 ```
 POST /login -> возможность авторизировать пользователя.   
-В теле запроса ожидаются поля login, password
-```
+В теле запроса ожидаются поля login, password   
 **В ответ получаем:**
+```
   1) статус ошибки и или текстовую строку, или массив объектов ошибок валидации
   2) 200, {status: 'good to go', token: Ваш_секретный токен, который используется при запросах к /user/:id }
 ```
