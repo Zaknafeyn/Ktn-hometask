@@ -6,14 +6,14 @@ var gutil = require('gulp-util');
 var fs = require('fs');
 var prettify = require('gulp-prettify');
 var sass = require('gulp-sass');
+var watch = require('gulp-watch');
 
-
-gulp.task('default', ['webserver']);
+gulp.task('default', ['webserver','watch-js']);
 
 //end build pages for HW2
 
 gulp.task('webserver', function() {
-	gulp.src('./')
+	gulp.src(['./'])
 		.pipe(webserver({
 			livereload: true,
 			directoryListing: {
@@ -21,4 +21,14 @@ gulp.task('webserver', function() {
 			},
 			open: true
 		}));
+});
+
+gulp.task('concat-js', function() {
+  gulp.src('./js/*.js')
+    .pipe(concat('solution.all.js'))
+    .pipe(gulp.dest('./dist/js/'))
+});
+
+gulp.task('watch-js', function() {
+    gulp.watch('./js/**/*.js',['concat-js']);
 });
