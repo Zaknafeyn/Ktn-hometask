@@ -47,12 +47,43 @@ function signup() {
 		if (passConfirm == '') {
 			addError("Empty password confirmation is not allowed!", passConfirmSel);
 			if(!isFocusSet) 
-				$(passSel).focus();
+				$(passConfirmSel).focus();
 		}
 		else
 			removeError(passConfirmSel);
 	}
 	else {
-		// validate 
+		// validate input
+		if (pass !== passConfirm){
+			addError("Password confirmation do not match password!", passConfirmSel);
+			$(passConfirmSel).focus();
+		}
+		else{
+			// post user
+			$.ajax({
+				url: "http://api.sudodoki.name:8888/signup", 
+				type: "POST",
+				dataType: "json",
+				data: {
+					login: login,
+					password: pass,
+					passwordConfirmation: passConfirm,
+					email: email
+				},
+				error: function(xhr, status) {
+					addError("Cannot create user! Server response status: " + status, loginSel);
+					$(loginSel).focus();
+				},
+				success:function(data, status, xhr){
+					proceedLogin(login, data.token);
+				},
+				beforeSend: function() {
+					$('#loading').show();
+				},
+				complete: function(){
+					$('#loading').hide();
+				},
+			});
+		}
 	}
 }

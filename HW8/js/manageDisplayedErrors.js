@@ -7,6 +7,9 @@ function removeError(selector){
 	// removes error class from a selected nodes
 	$(selector).removeClass("error");
 }
+function cleanUpErrorMessages (section){
+	cleanUpErrors(section);
+}
 
 function cleanUpErrors(section){
 	// removes error messages
@@ -17,5 +20,13 @@ function removeAllErrors(section){
 	// removes errors and error messages
 	// available sections: login, signup
 	$("#" + section + " input").removeClass("error");
-	cleanUpErrorMessages(section)
+	cleanUpErrorMessages(section);
+}
+
+function cleanLoginErrors(){
+	removeAllErrors("login");
+}
+
+function cleanSignupErrors(){
+	removeAllErrors("signup");		
 }

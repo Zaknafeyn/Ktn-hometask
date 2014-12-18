@@ -38,7 +38,30 @@ function login() {
 				addError("Invalid login or password!", loginSel);
 				addError("Invalid login or password!", passSel);
 				$(loginSel).focus();
-			}
+			},
+			success:function(data){
+				proceedLogin(login, data.token);
+			},
+			beforeSend: function() {
+				$('#loading').show();
+			},
+			complete: function(){
+				$('#loading').hide();
+			},
 		});
 	}
+}
+
+function proceedLogin(userName, token) {
+	// show greetings
+	$("#userGreeting-nav").removeClass("hidden").addClass("loggedin");
+	$("#userGreeting-nav a").text("Logged in as " + userName);
+	$("#login-nav").hide();
+	$("#signup-nav").hide();
+}
+
+function proceedLogout(userName, token) {
+	$("#userGreeting-nav").addClass("hidden").removeClass("loggedin");
+	$("#login-nav").show();
+	$("#signup-nav").show();
 }

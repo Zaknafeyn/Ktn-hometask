@@ -1,3 +1,18 @@
 .hidden {
 	display: none;
 }
+
+#loading {
+	display: none;
+	position: absolute;
+	left: calc(50% - 16px); /* 16 - half of img size */
+	top: calc(50% - 16px);
+}
+
+#show-full {
+	display: none;
+}
+
+.loggedin {
+	display: block;
+}

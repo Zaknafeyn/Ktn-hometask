@@ -7,9 +7,6 @@ $(document).ready(function(){
 	// set default nav-bar state
 	togleSections("login");
 
-	$("#show-full").hide();
-	// handle errors
-
 	// set events for buttons
 	// login form
 	$("#login a").click(signUpClick);
@@ -17,7 +14,8 @@ $(document).ready(function(){
 
 	// signup form
 	$("#signup a").click(logInClick);
-	$('#signup input[type="button"]').click(signup);	
+	$('#signup input[type="button"]').click(signup);
+
 });
 
 function signUpClick (e){
@@ -33,6 +31,10 @@ function listClick(e){
 }
 
 function togleSections(sectionToShow){
+
+	cleanupSectionInputs(sectionToShow);
+	removeAllErrors(sectionToShow);
+
 	var sections = ["login", "list", "signup"];
 	var len = sections.length;
 	for(var i = 0; i < len; i++)
@@ -50,4 +52,9 @@ function togleSections(sectionToShow){
 			$(navId).removeClass("active");
 		}
 	}
+}
+
+function cleanupSectionInputs(section) {
+	$("#" + section + " input[type='text']").val("");
+	$("#" + section + " input[type='password']").val("");
 }

@@ -25,7 +25,12 @@ gulp.task('webserver', function() {
 
 gulp.task('concat-js', function() {
   gulp.src('./js/*.js')
-    .pipe(concat('solution.all.js'))
+    .pipe(concat('solution.all.js')).
+    on('error', function (error) {
+		//If you want details of the error in the console
+		console.log(error.toString());
+		this.emit('end');
+	})
     .pipe(gulp.dest('./dist/js/'))
 });
 
