@@ -32,8 +32,9 @@
 				<li id="signup-nav"><a href="#">Signup</a></li>
 				<li id="list-nav"><a href="#">List my dates!</a></li>
 			</ul>
-			<ul class="right">
-				<li id="userGreeting-nav" class="hidden"><a href="#">Logged in as ...</a></li>
+			<ul id="user-info" class="right">
+				<li id="user-greeting-nav" class="hidden"><a href="#">Logged in as ...</a></li>
+				<li id="logout-nav" class="hidden"><a href="#">Logout</a></li>
 			</ul>
 		</section>
 	</nav>
@@ -48,6 +49,7 @@
 							<!-- <input class="error" name="login" type="text" placeholder="enter your login"> -->
 							<!-- <small class="error">Something went wrong!</small> -->
 							<input name="password" type="password" placeholder="enter your password">
+							<label><input name = "remember-me" type="checkbox"></input>&nbsp;Remember me</label>
 							<input type="button" value="Log me in" class="button">
 							<a class="button secondary">Sign me up</a>
 						</form>

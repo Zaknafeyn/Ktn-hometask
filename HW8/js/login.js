@@ -34,12 +34,22 @@ function login() {
 				login: login,
 				password: password
 			},
+			// statusCode: {
+   //  			403: function() {
+   //    				addError("Invalid login or password!", loginSel);
+			// 		addError("Invalid login or password!", passSel);
+			// 		$(loginSel).focus();
+   //  			},
+
+   //  		},
 			error: function(xhr, status) {
 				addError("Invalid login or password!", loginSel);
 				addError("Invalid login or password!", passSel);
 				$(loginSel).focus();
 			},
 			success:function(data){
+				removeError(passSel);
+				removeError(loginSel);
 				proceedLogin(login, data.token);
 			},
 			beforeSend: function() {
@@ -54,14 +64,18 @@ function login() {
 
 function proceedLogin(userName, token) {
 	// show greetings
-	$("#userGreeting-nav").removeClass("hidden").addClass("loggedin");
-	$("#userGreeting-nav a").text("Logged in as " + userName);
+	togleSections("list");
+
+	$("#user-info>*").removeClass("hidden").addClass("loggedin");
+	$("#user-greeting-nav a").text("Logged in as " + userName);
 	$("#login-nav").hide();
 	$("#signup-nav").hide();
 }
 
 function proceedLogout(userName, token) {
-	$("#userGreeting-nav").addClass("hidden").removeClass("loggedin");
+	togleSections("login");
+
+	$("#user-info>*").removeClass("loggedin").addClass("hidden");
 	$("#login-nav").show();
 	$("#signup-nav").show();
 }
