@@ -34,6 +34,14 @@ function login() {
 				login: login,
 				password: password
 			},
+			// statusCode: {
+   //  			403: function() {
+   //    				addError("Invalid login or password!", loginSel);
+			// 		addError("Invalid login or password!", passSel);
+			// 		$(loginSel).focus();
+   //  			},
+
+   //  		},
 			error: function(xhr, status) {
 				addError("Invalid login or password!", loginSel);
 				addError("Invalid login or password!", passSel);
@@ -42,10 +50,7 @@ function login() {
 			success:function(data){
 				removeError(passSel);
 				removeError(loginSel);
-
-				var responseData = JSON.parse(data);
-
-				proceedLogin(login, responseData.token);
+				proceedLogin(login, data.token);
 			},
 			beforeSend: function() {
 				$('#loading').show();
@@ -55,4 +60,45 @@ function login() {
 			},
 		});
 	}
+}
+
+function proceedLogin(userName, token) {
+	// show greetings
+	togleSections("list");
+
+	$("#user-info>*").removeClass("hidden").addClass("loggedin");
+	$("#user-greeting-nav a").text("Logged in as " + userName);
+	$("#login-nav").hide();
+	$("#signup-nav").hide();
+
+	// show list of users
+	$.ajax({
+			url: "http://api.sudodoki.name:8888/users", 
+			type: "GET",
+			error: function(xhr, status) {
+				alert("error: " + status);
+			},
+			success:function(data){
+				var len = data.length;
+				for(var i=0; i<len; i++){
+
+				};
+				
+				alert("len: " + len);
+			},
+			beforeSend: function() {
+				$('#loading').show();
+			},
+			complete: function(){
+				$('#loading').hide();
+			},
+		});
+}
+
+function proceedLogout(userName, token) {
+	togleSections("login");
+
+	$("#user-info>*").removeClass("loggedin").addClass("hidden");
+	$("#login-nav").show();
+	$("#signup-nav").show();
 }

@@ -1,6 +1,6 @@
 $(document).ready(function(){
 	// $("#signup").hide();
-	$("#list-nav").hide();
+	// $("#list").hide();
 	// $("#show-full").hide();
 
 	// set events for nav bar
@@ -9,11 +9,8 @@ $(document).ready(function(){
 	$("#list-nav").click(listClick);
 
 	$("#logout-nav").click(logoutClick)
-
 	// set default nav-bar state
 	togleSections("login");
-	$("#login input[name='login']").focus();
-
 
 	// set events for buttons
 	// login form
@@ -33,10 +30,6 @@ $(document).ready(function(){
 		if(e.keyCode == 13)
 			$("#signup input[type='button']").click();
 	});
-
-	// use .on() for dynamically created elements in DOM
-	$(document).on('click','#list a.url', onClickUserPanel);
-
 });
 
 function signUpClick (e){
@@ -54,7 +47,6 @@ function listClick(e){
 }
 
 function logoutClick(e){
-	console.log("Proceed logout");
 	proceedLogout();
 }
 
@@ -63,7 +55,7 @@ function togleSections(sectionToShow){
 	cleanupSectionInputs(sectionToShow);
 	removeAllErrors(sectionToShow);
 
-	var sections = ["login", "signup"];
+	var sections = ["login", "list", "signup"];
 	var len = sections.length;
 	for(var i = 0; i < len; i++)
 	{
@@ -82,7 +74,6 @@ function togleSections(sectionToShow){
 	}
 }
 
-
 function cleanupSectionInputs(section) {
 	$("#" + section + " input[type='text']").val("");
 	$("#" + section + " input[type='password']").val("");
@@ -92,17 +83,10 @@ function proceedLogin(userName, token) {
 	// show greetings
 	togleSections("list");
 
-	window.config = {
-		token : token
-	};
-
 	$("#user-info>*").removeClass("hidden").addClass("loggedin");
 	$("#user-greeting-nav a").text("Logged in as " + userName);
 	$("#login-nav").hide();
 	$("#signup-nav").hide();
-	$("#list-nav").show();
-	$("#list-nav").addClass("active");
-
 
 	// show list of users
 	$.ajax({
@@ -112,45 +96,27 @@ function proceedLogin(userName, token) {
 				alert("error: " + status);
 			},
 			success:function(data){
-				// $("#list ul *").remove();
-				emptyList();
-
 				var len = data.length;
+				$("#list ul").empty();
 				for(var i=0; i<len; i++){
+					console.log(data[i] + " : " + createItem(data[i]));
+
 					$("#list ul").append(createItem(data[i]));
 				};
-
-				getUserDetails(getCurrentToken(), data[0].id);
-
 			},
 			beforeSend: function() {
 				$('#loading').show();
 			},
-			complete: function() {
+			complete: function(){
 				$('#loading').hide();
 			},
 		});
 }
 
-function getCurrentToken() {
-	return window.config.token;
-}
-
-function proceedLogout() {
+function proceedLogout(userName, token) {
 	togleSections("login");
-
-	// reset token
-	window.config = {
-		token : ''
-	};
 
 	$("#user-info>*").removeClass("loggedin").addClass("hidden");
 	$("#login-nav").show();
 	$("#signup-nav").show();
-	$("#list-nav").hide();
-
-	emptyList();
-	$("#list").hide();
-	$("#show-full").hide();
-
 }
