@@ -2,8 +2,8 @@
 function duckCount() {
       // SOLUTION GOES HERE
       var count = 0;
-      return arguments.reduce(function(prev, curr){
-      	if (curr.hasOwnProperty('quack'))
+      return [].reduce.call(arguments, function(prev, curr){
+      	if (Object.prototype.hasOwnProperty.call(curr, 'quack'))
       		return prev + 1;
       	return prev;
       }, 0);
