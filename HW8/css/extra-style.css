@@ -16,3 +16,15 @@
 .loggedin {
 	display: block;
 }
+
+#show-full {
+	text-align: center;
+}
+
+#list a.url, #show-full h2 {
+	text-transform: capitalize;
+}
+
+#list i {
+	font-weight: bold;
+}

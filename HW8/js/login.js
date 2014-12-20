@@ -50,7 +50,12 @@ function login() {
 			success:function(data){
 				removeError(passSel);
 				removeError(loginSel);
-				proceedLogin(login, data.token);
+				console.log("Successful login");
+
+				var responseData = JSON.parse(data);
+
+				console.log("Status: " + responseData.status);
+				proceedLogin(login, responseData.token);
 			},
 			beforeSend: function() {
 				$('#loading').show();
@@ -60,39 +65,6 @@ function login() {
 			},
 		});
 	}
-}
-
-function proceedLogin(userName, token) {
-	// show greetings
-	togleSections("list");
-
-	$("#user-info>*").removeClass("hidden").addClass("loggedin");
-	$("#user-greeting-nav a").text("Logged in as " + userName);
-	$("#login-nav").hide();
-	$("#signup-nav").hide();
-
-	// show list of users
-	$.ajax({
-			url: "http://api.sudodoki.name:8888/users", 
-			type: "GET",
-			error: function(xhr, status) {
-				alert("error: " + status);
-			},
-			success:function(data){
-				var len = data.length;
-				for(var i=0; i<len; i++){
-
-				};
-				
-				alert("len: " + len);
-			},
-			beforeSend: function() {
-				$('#loading').show();
-			},
-			complete: function(){
-				$('#loading').hide();
-			},
-		});
 }
 
 function proceedLogout(userName, token) {

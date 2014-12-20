@@ -9,6 +9,7 @@ $(document).ready(function(){
 	$("#list-nav").click(listClick);
 
 	$("#logout-nav").click(logoutClick)
+
 	// set default nav-bar state
 	togleSections("login");
 
@@ -30,6 +31,10 @@ $(document).ready(function(){
 		if(e.keyCode == 13)
 			$("#signup input[type='button']").click();
 	});
+
+	$(document).on('click','#list a.url', onClickUserPanel)
+
+	// $("#list a.url").on("click", onClickUserPanel);
 });
 
 function signUpClick (e){
@@ -74,6 +79,7 @@ function togleSections(sectionToShow){
 	}
 }
 
+
 function cleanupSectionInputs(section) {
 	$("#" + section + " input[type='text']").val("");
 	$("#" + section + " input[type='password']").val("");
@@ -82,6 +88,10 @@ function cleanupSectionInputs(section) {
 function proceedLogin(userName, token) {
 	// show greetings
 	togleSections("list");
+
+	window.config = {
+		token : token
+	};
 
 	$("#user-info>*").removeClass("hidden").addClass("loggedin");
 	$("#user-greeting-nav a").text("Logged in as " + userName);
@@ -96,23 +106,37 @@ function proceedLogin(userName, token) {
 				alert("error: " + status);
 			},
 			success:function(data){
+				$("#list ul *").remove();
+
 				var len = data.length;
 				for(var i=0; i<len; i++){
-					console.log(data[i] + " : " + createItem(data[i]));
+					// console.log(data[i] + " : " + createItem(data[i]));
 					$("#list ul").append(createItem(data[i]));
 				};
+
+				getUserDetails(getCurrentToken(), data[0].id);
+
 			},
 			beforeSend: function() {
 				$('#loading').show();
 			},
-			complete: function(){
+			complete: function() {
 				$('#loading').hide();
 			},
 		});
 }
 
-function proceedLogout(userName, token) {
+function getCurrentToken() {
+	return window.config.token;
+}
+
+function proceedLogout(userName) {
 	togleSections("login");
+
+	// reset token
+	window.config = {
+		token : ''
+	};
 
 	$("#user-info>*").removeClass("loggedin").addClass("hidden");
 	$("#login-nav").show();
