@@ -1,5 +1,7 @@
 ## Практика по jQuery (3/12/14) aka MATCH-DOT-KOM KILLAH!
 
+[Link to implementation](http://zaknafeyn.github.io/Ktn-hometask/HW8/index.html)
+
 [Оригинал задания](https://gist.github.com/sudodoki/16c0a51f6dcd97577f13)
 
 #Что мы имеем:
