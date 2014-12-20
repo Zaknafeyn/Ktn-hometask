@@ -63,7 +63,7 @@ function togleSections(sectionToShow){
 	cleanupSectionInputs(sectionToShow);
 	removeAllErrors(sectionToShow);
 
-	var sections = ["login", "signup"];
+	var sections = ["login", "signup", "list"];
 	var len = sections.length;
 	for(var i = 0; i < len; i++)
 	{
@@ -138,6 +138,8 @@ function getCurrentToken() {
 
 function proceedLogout() {
 	togleSections("login");
+
+	$("#login input[name='login']").focus();
 
 	// reset token
 	window.config = {
