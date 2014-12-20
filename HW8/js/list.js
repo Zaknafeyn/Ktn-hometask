@@ -1,34 +1,24 @@
 function createItem(personObj) {
-	// {
- //    "id": "2bc2f8f7fe03f23",
- //    "user": {
- //      "gender": "male",
- //      "name": {
- //        "title": "mr",
- //        "first": "soham",
- //        "last": "patterson"
- //      }
- //    }
- //  }
 
 	var user = personObj.user;
 	var name = user.name;
 
-	var resStr = '<li>';
-	resStr += '	<div class="person ' + user.gender + '">';
-	resStr += '<a  id="' + personObj.id + '" class="url n" href="#show-full"><i>' + name.title + '. </i>' +  name.first + ",&nbsp;" + name.last + '</a>';
-	resStr += "</div>";
-	resStr += "</li>";
+	var obj = {
+		id : personObj.id,
+		title : name.title,
+		firstName : name.first,
+		lastName : name.last,
+		gender : user.gender
+	};
 
-	return resStr;
+	return implementHtmlTemplate("#item-template", obj);
 }
 
 function showUserDetails(userObj){
 	$("#show-full").hide();
 	$("#show-full *").remove();
 
-	// $("show-full").append("userObj");	
-	console.log(userObj);
+	// console.log(userObj);
 	var user = userObj.user;
 
 	var name = user.name;
@@ -37,38 +27,50 @@ function showUserDetails(userObj){
 	var email = user.email;
 	var phone = user.phone;
 
-	var str = "<div>";
-	str += "<h2>" + name.title + ". " + name.first + ", " + name.last + "</h2>";
-	str += "<section>";
-	str += "<h3>Location</h3>";
-	str += "Street: " + location.street + ", " + location.city +", " + location.state + ", " + location.zip;
-	str += "</section>";
-	str += "<section>";
-	str += "<h3>Connect with " + (gender === 'male'?'him':'her') + "!</h3>";
-	str += '<a href="mailto:' + email + '">' + email + '</a>';
-	str += "<br/>";
-	str += '<a href="tel:' + phone + '">' + phone + '</a>';
-	str += "</section>";
-	str += "</div>";
+	var obj = {
+		title : name.title,
+		firstName : name.first,
+		lastName : name.last,
+		street : location.street,
+		city : location.city,
+		state : location.state,
+		zip : location.zip,
+		treatment : (gender === 'male'?'him':'her'),
+		email : email,
+		tel : phone
+	};
 
-	console.log(str);
-	$("#show-full").append(str);	
+	var result = implementHtmlTemplate("#user-details-template", obj);
+
+	$("#show-full").append(result);
 
 	$("#show-full").show();
 }
 
+function implementHtmlTemplate(templateName, dataObj) {
+	var source  = $(templateName).html();
+	var template = Handlebars.compile(source);
+	return template(dataObj);
+}
+
 function getUserDetails(token, userId){
+	if (userId == '' || userId == undefined)
+	{
+		alert("User id is invalid. Try again");
+	}
+
 	$.ajax({
 			url: "http://api.sudodoki.name:8888/user/" + userId,
 			type: "GET",
 			headers: {"SECRET-TOKEN" : token},
 			error: function(xhr, status) {
-				alert("error: " + status);
+				alert("error when retrieving details for user " + userId + ". Server status: " + status);
 			},
 			success:function(data){
-				console.log(data);
+				// console.log(data);
 				var jsonArr = JSON.parse(data);
 				showUserDetails(jsonArr[0]);
+				setActiveItem(userId);
 			},
 			beforeSend: function() {
 				$('#loading').show();
@@ -79,8 +81,13 @@ function getUserDetails(token, userId){
 		});
 }
 
+function setActiveItem(itemId) {
+	// console.log("setting active item")
+	$("#list div.person").removeClass("active-item");
+	$("#list div#" + itemId).addClass("active-item");
+}
+
 function onClickUserPanel(e) {
-	// console.log(e.target.id + ", token = " + getCurrentToken());
 	getUserDetails(getCurrentToken(), e.target.id);
 
 }

@@ -28,3 +28,7 @@
 #list i {
 	font-weight: bold;
 }
+
+.active-item {
+	background-color: rgba(0, 255,0, 0.3);
+}

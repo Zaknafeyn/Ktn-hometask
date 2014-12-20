@@ -12,6 +12,8 @@ $(document).ready(function(){
 
 	// set default nav-bar state
 	togleSections("login");
+	$("#login input[name='login']").focus();
+
 
 	// set events for buttons
 	// login form
@@ -32,6 +34,7 @@ $(document).ready(function(){
 			$("#signup input[type='button']").click();
 	});
 
+	// use .on() for dynamically created elements in DOM
 	$(document).on('click','#list a.url', onClickUserPanel)
 
 	// $("#list a.url").on("click", onClickUserPanel);

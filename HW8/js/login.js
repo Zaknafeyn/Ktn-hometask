@@ -50,11 +50,11 @@ function login() {
 			success:function(data){
 				removeError(passSel);
 				removeError(loginSel);
-				console.log("Successful login");
+				// console.log("Successful login");
 
 				var responseData = JSON.parse(data);
 
-				console.log("Status: " + responseData.status);
+				// console.log("Status: " + responseData.status);
 				proceedLogin(login, responseData.token);
 			},
 			beforeSend: function() {
