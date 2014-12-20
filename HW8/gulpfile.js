@@ -31,7 +31,7 @@ gulp.task('concat-js', function() {
 		console.log(error.toString());
 		this.emit('end');
 	})
-    .pipe(gulp.dest('./dist/js/'))
+    .pipe(gulp.dest('./distr/js/'))
 });
 
 gulp.task('watch-js', function() {
