@@ -56,6 +56,7 @@ function getUserDetails(token, userId){
 	if (userId == '' || userId == undefined)
 	{
 		alert("User id is invalid. Try again");
+		return;
 	}
 
 	$.ajax({
