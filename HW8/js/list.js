@@ -18,7 +18,6 @@ function showUserDetails(userObj){
 	$("#show-full").hide();
 	$("#show-full *").remove();
 
-	// console.log(userObj);
 	var user = userObj.user;
 
 	var name = user.name;
@@ -67,7 +66,6 @@ function getUserDetails(token, userId){
 				alert("error when retrieving details for user " + userId + ". Server status: " + status);
 			},
 			success:function(data){
-				// console.log(data);
 				var jsonArr = JSON.parse(data);
 				showUserDetails(jsonArr[0]);
 				setActiveItem(userId);
@@ -81,8 +79,11 @@ function getUserDetails(token, userId){
 		});
 }
 
+function emptyList() {
+	$("#list ul *").remove();
+}
+
 function setActiveItem(itemId) {
-	// console.log("setting active item")
 	$("#list div.person").removeClass("active-item");
 	$("#list div#" + itemId).addClass("active-item");
 }

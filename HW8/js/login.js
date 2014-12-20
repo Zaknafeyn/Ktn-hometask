@@ -34,14 +34,6 @@ function login() {
 				login: login,
 				password: password
 			},
-			// statusCode: {
-   //  			403: function() {
-   //    				addError("Invalid login or password!", loginSel);
-			// 		addError("Invalid login or password!", passSel);
-			// 		$(loginSel).focus();
-   //  			},
-
-   //  		},
 			error: function(xhr, status) {
 				addError("Invalid login or password!", loginSel);
 				addError("Invalid login or password!", passSel);
@@ -50,11 +42,9 @@ function login() {
 			success:function(data){
 				removeError(passSel);
 				removeError(loginSel);
-				// console.log("Successful login");
 
 				var responseData = JSON.parse(data);
 
-				// console.log("Status: " + responseData.status);
 				proceedLogin(login, responseData.token);
 			},
 			beforeSend: function() {
@@ -65,12 +55,4 @@ function login() {
 			},
 		});
 	}
-}
-
-function proceedLogout(userName, token) {
-	togleSections("login");
-
-	$("#user-info>*").removeClass("loggedin").addClass("hidden");
-	$("#login-nav").show();
-	$("#signup-nav").show();
 }
