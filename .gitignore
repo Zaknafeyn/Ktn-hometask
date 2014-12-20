@@ -29,3 +29,5 @@ node_modules
 *.pxm
 dist
 HW2/build
+#for HW8
+!solution.all.js
