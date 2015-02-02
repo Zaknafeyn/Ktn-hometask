@@ -30,6 +30,7 @@ $(document).ready(function(){
 		if(e.keyCode == 13)
 			$("#signup input[type='button']").click();
 	});
+
 });
 
 function signUpClick (e){
@@ -77,46 +78,4 @@ function togleSections(sectionToShow){
 function cleanupSectionInputs(section) {
 	$("#" + section + " input[type='text']").val("");
 	$("#" + section + " input[type='password']").val("");
-}
-
-function proceedLogin(userName, token) {
-	// show greetings
-	togleSections("list");
-
-	$("#user-info>*").removeClass("hidden").addClass("loggedin");
-	$("#user-greeting-nav a").text("Logged in as " + userName);
-	$("#login-nav").hide();
-	$("#signup-nav").hide();
-
-	// show list of users
-	$.ajax({
-			url: "http://api.sudodoki.name:8888/users", 
-			type: "GET",
-			error: function(xhr, status) {
-				alert("error: " + status);
-			},
-			success:function(data){
-				var len = data.length;
-				$("#list ul").empty();
-				for(var i=0; i<len; i++){
-					console.log(data[i] + " : " + createItem(data[i]));
-
-					$("#list ul").append(createItem(data[i]));
-				};
-			},
-			beforeSend: function() {
-				$('#loading').show();
-			},
-			complete: function(){
-				$('#loading').hide();
-			},
-		});
-}
-
-function proceedLogout(userName, token) {
-	togleSections("login");
-
-	$("#user-info>*").removeClass("loggedin").addClass("hidden");
-	$("#login-nav").show();
-	$("#signup-nav").show();
 }
